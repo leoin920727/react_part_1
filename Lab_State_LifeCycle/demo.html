@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="repo"></div>
+
+
+    <script>
+        var obj = {
+            x: 100,
+            y: 200
+        }
+        // var obj2 = obj;
+        // obj2.x = 101;
+        // repo.innerText = `X:${obj.x},Y:${obj.y}`;
+        var obj2 = { ...obj, z: 300 };
+        obj2.x = 1001;
+        repo.innerText = `X:${obj.x},Y:${obj.y}`;
+        repo.innerHTML = `X:${obj2.x},Y:${obj2.y},Z:${obj2.z}`;
+
+    </script>
+</body>
+
+</html>
