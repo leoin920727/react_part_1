@@ -129,8 +129,24 @@ Lab: 元件的 state 與生命週期
 
 3.5 State 與 Props 有何不同?
 
-
-
+=========================
+state是讓元件控制自己的狀態
+可更改
+有狀態元件 => class
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { date: new Date() };
+            }}
+=========================
+props是讓外部對元件自己進行配置
+不可更改
+無狀態元件 => function
+        function Welcome(props) {
+            return <h1>Hello {props.name}</h1>
+        }
+        <Welcome name="Jeter" />
+=========================
 
 4.  將 state 傳遞給內層/下層元件
 

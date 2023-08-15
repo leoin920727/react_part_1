@@ -29,24 +29,51 @@
         class Toggle extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { isToggleOn: true };
+                this.state = { isToggleOn: this.props.onoff };
+                // this.doClick = this.doClick.bind(this);
 
             }
 
             render() {
                 return (
-                    <button 
-                        className="btn btn-outline-success" 
+                    <button
+                        className="btn btn-outline-success"
+                        onClick={() => {
+                            this.doClick()
+                        }}
                     >
                         {this.state.isToggleOn ? 'ON' : 'OFF'}
                     </button>
                 );
             }
+            // 使用箭頭函式才找的到this
+            // 找到this才能設定this.setState()
+            doClick = (e) => {
+                console.log(e);
+                // console.log(event.target);
+                // console.log(this.key);
+                this.setState({ isToggleOn: !this.state.isToggleOn })
+            }
         }
+        var btnList = [
+            { btnid: 1, value: true },
+            { btnid: 2, value: true },
+            { btnid: 3, value: false },
+            { btnid: 4, value: true },
+        ];
+
+
 
         ReactDOM.render(
             <div className="container">
-                <Toggle />
+                {btnList.map((btnObj, i) => {
+                    return <Toggle
+                        // i是陣列位子，可以拿來用在key={i}
+                        key={i}
+                        id={btnObj.btnid}
+                        onoff={btnObj.value}
+                    />
+                })}
             </div>,
             document.getElementById('root')
         );
